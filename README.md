@@ -5,7 +5,7 @@ Sección 01 · Equipo 02 · Proyecto 02 "Retail Content Factory" · Tópicos Esp
 Este repositorio despliega n8n Community Edition (gratuito) con los workflows del agente AG-CTX. No contiene claves.
 
 ## Qué hace el contenedor al arrancar (`arranque.sh`)
-1. Crea las credenciales de Neon y Gemini a partir de variables secretas.
+1. Crea las credenciales de Neon y OpenRouter a partir de variables secretas.
 2. Importa y activa `AG-CTX_v1.json` (agente) y `AG-CTX_MOCK_v1.json` (mock).
 3. Arranca n8n y crea la cuenta del editor con `N8N_OWNER_EMAIL` y `N8N_OWNER_PASSWORD`.
 
@@ -26,7 +26,7 @@ Environment → agregar como variables:
 | Variable | Valor |
 |---|---|
 | `NEON_PASSWORD` | contraseña del rol `neondb_owner` |
-| `GEMINI_API_KEY` | clave gratuita de Google AI Studio |
+| `OPENROUTER_API_KEY` | clave de OpenRouter (el agente usa solo modelos gratuitos `:free`) |
 | `N8N_OWNER_EMAIL` | correo para entrar al editor |
 | `N8N_OWNER_PASSWORD` | contraseña del editor (8+ caracteres, una mayúscula y un número) |
 

@@ -19,7 +19,7 @@ if [ -n "$SPACE_HOST" ] && [ -z "$WEBHOOK_URL" ]; then
 fi
 
 faltan=""
-for v in NEON_PASSWORD GEMINI_API_KEY N8N_OWNER_EMAIL N8N_OWNER_PASSWORD; do
+for v in NEON_PASSWORD OPENROUTER_API_KEY N8N_OWNER_EMAIL N8N_OWNER_PASSWORD; do
   eval "val=\${$v:-}"; [ -z "$val" ] && faltan="$faltan $v"
 done
 [ -n "$faltan" ] && echo "AVISO: faltan secretos:$faltan (el agente arrancará, pero sin ellos no funcionará del todo)"
@@ -32,9 +32,11 @@ const creds = [
   { id: "NEON_AG_CTX", name: "Neon AG-CTX", type: "postgres",
     data: { host: e.NEON_HOST, database: e.NEON_DATABASE, user: e.NEON_USER, password: e.NEON_PASSWORD || "",
             port: Number(e.NEON_PORT || 5432), ssl: e.NEON_SSL || "require", maxConnections: 10 } },
-  { id: "GEMINI", name: "Google Gemini(PaLM) Api account", type: "googlePalmApi",
-    data: { host: "https://generativelanguage.googleapis.com", apiKey: e.GEMINI_API_KEY || "" } },
+  { id: "OPENROUTER", name: "OpenRouter account", type: "openRouterApi",
+    data: { apiKey: e.OPENROUTER_API_KEY || "", url: "https://openrouter.ai/api/v1" } },
 ];
+if (e.GEMINI_API_KEY) creds.push({ id: "GEMINI", name: "Google Gemini(PaLM) Api account", type: "googlePalmApi",
+    data: { host: "https://generativelanguage.googleapis.com", apiKey: e.GEMINI_API_KEY } });   // opcional: api_llm = gemini
 require("fs").writeFileSync(process.argv[1], JSON.stringify(creds));
 ' "$CRED_FILE"
 n8n import:credentials --input="$CRED_FILE"

@@ -20,7 +20,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Nodo \"Validar sobre\" — revisa la forma del sobre del contrato v1.0 antes de tocar la base.\n// Configuración del agente: cambiar aquí, no en los demás nodos.\nconst CONFIG = {\n  agent_id: 'AG-CTX',\n  agent_version: '1.0.0',\n  contract_version: '1.0',\n  prompt_version: 'interpretar-v2',\n  api_llm: 'gemini',                          // 'gemini' (API nativa de Google, capa gratuita) u 'openai' (OpenRouter u otro compatible)\n  modelo_llm: 'gemini-flash-lite-latest',     // gratis; si falla o se agota el cupo diario, respaldo por palabras clave\n  modelos_respaldo: [],                       // solo con OpenRouter (parámetro \"models\")\n  max_items: 5,\n  max_request_chars: 2000,\n};\n\nconst body = $input.first().json.body ?? {};\nconst started_at = new Date().toISOString();\nconst errores = [];\n\nconst esTexto = v => typeof v === 'string' && v.trim() !== '';\nif (body.contract_version !== CONFIG.contract_version) errores.push(`contract_version debe ser \"${CONFIG.contract_version}\" (recibido: ${JSON.stringify(body.contract_version)})`);\nif (!esTexto(body.execution_id)) errores.push('execution_id es obligatorio');\nif (!Number.isInteger(body.iteration) || body.iteration < 1) errores.push('iteration debe ser un entero ≥ 1');\nif (body.agent_id !== CONFIG.agent_id) errores.push('agent_id debe ser AG-CTX');\nif (!esTexto(body.business_profile_id)) errores.push('business_profile_id es obligatorio');\nif (!esTexto(body.user_request)) errores.push('user_request es obligatorio');\nelse if (body.user_request.length > CONFIG.max_request_chars) errores.push(`user_request supera ${CONFIG.max_request_chars} caracteres`);\nif (!esTexto(body.sent_at) || isNaN(Date.parse(body.sent_at))) errores.push('sent_at debe ser una fecha ISO 8601');\n\nreturn [{ json: { valido: errores.length === 0, errores, body, config: CONFIG, started_at } }];\n"
+        "jsCode": "// Nodo \"Validar sobre\" — revisa la forma del sobre del contrato v1.0 antes de tocar la base.\n// Configuración del agente: cambiar aquí, no en los demás nodos.\nconst CONFIG = {\n  agent_id: 'AG-CTX',\n  agent_version: '1.0.0',\n  contract_version: '1.0',\n  prompt_version: 'interpretar-v2',\n  api_llm: 'openai',                          // 'openai' = OpenRouter (formato OpenAI) · 'gemini' = API nativa de Google\n  modelo_llm: 'google/gemma-4-31b-it:free',   // modelo GRATUITO de OpenRouter (sufijo :free); nunca uno de pago\n  modelos_respaldo: ['nvidia/nemotron-3.5-super-vl:free'],   // OpenRouter lo prueba si el principal falla; si todo falla, palabras clave\n  max_items: 5,\n  max_request_chars: 2000,\n};\n\nconst body = $input.first().json.body ?? {};\nconst started_at = new Date().toISOString();\nconst errores = [];\n\nconst esTexto = v => typeof v === 'string' && v.trim() !== '';\nif (body.contract_version !== CONFIG.contract_version) errores.push(`contract_version debe ser \"${CONFIG.contract_version}\" (recibido: ${JSON.stringify(body.contract_version)})`);\nif (!esTexto(body.execution_id)) errores.push('execution_id es obligatorio');\nif (!Number.isInteger(body.iteration) || body.iteration < 1) errores.push('iteration debe ser un entero ≥ 1');\nif (body.agent_id !== CONFIG.agent_id) errores.push('agent_id debe ser AG-CTX');\nif (!esTexto(body.business_profile_id)) errores.push('business_profile_id es obligatorio');\nif (!esTexto(body.user_request)) errores.push('user_request es obligatorio');\nelse if (body.user_request.length > CONFIG.max_request_chars) errores.push(`user_request supera ${CONFIG.max_request_chars} caracteres`);\nif (!esTexto(body.sent_at) || isNaN(Date.parse(body.sent_at))) errores.push('sent_at debe ser una fecha ISO 8601');\n\nreturn [{ json: { valido: errores.length === 0, errores, body, config: CONFIG, started_at } }];\n"
       },
       "id": "844762e0-0617-5d6e-908d-bf8e140268da",
       "name": "Validar sobre",
@@ -197,7 +197,7 @@
         "method": "POST",
         "url": "={{ $json.llm_url }}",
         "authentication": "predefinedCredentialType",
-        "nodeCredentialType": "googlePalmApi",
+        "nodeCredentialType": "openRouterApi",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ JSON.stringify($json.llm_body) }}",
@@ -216,9 +216,9 @@
       "onError": "continueRegularOutput",
       "retryOnFail": false,
       "credentials": {
-        "googlePalmApi": {
-          "id": "GEMINI",
-          "name": "Google Gemini(PaLM) Api account"
+        "openRouterApi": {
+          "id": "OPENROUTER",
+          "name": "OpenRouter account"
         }
       }
     },
