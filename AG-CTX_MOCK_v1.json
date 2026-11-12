@@ -1,0 +1,145 @@
+{
+  "name": "AG-CTX MOCK v1 (Sec01 Equipo02)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ag-ctx-mock/invoke",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "b382a5db-ea91-4828-8187-969d7f886020",
+      "name": "POST /invoke",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "8d68616d-754b-4785-a49b-e74a96f1a2dc"
+    },
+    {
+      "parameters": {
+        "jsCode": "// AG-CTX MOCK v1 — respuesta fija y válida según el contrato v1.0. No consulta la base.\nconst PACKS = {\"BP-001\": {\"context_pack\": {\"gaps\": [{\"campo\": \"identidad_visual\", \"codigo\": \"PERFIL_INCOMPLETO\", \"detalle\": \"Sin logo_url (AG-BOR no podrá incluir el logo)\", \"bloqueante\": false}], \"tono\": {\"tono\": \"Cercano, optimista y claro\", \"estilo\": \"Tutea al cliente. Frases cortas. Español neutro con giros venezolanos suaves. Primero el beneficio, después el dato.\", \"hashtags_marca\": [\"#RetailVenture\", \"#CompraInteligenteRV\"], \"politica_emojis\": \"Máximo 3 emojis por publicación; ninguno en el precio.\", \"palabras_prohibidas\": [\"el mejor del mercado\", \"el más barato\", \"garantizado\", \"gratis\", \"último día\", \"oferta irrepetible\"], \"palabras_obligatorias\": [\"RetailVenture\"]}, \"facts\": [{\"id\": \"F-OBJ-01\", \"tipo\": \"objetivo\", \"texto\": \"Objetivo comercial vigente (prioridad 1): Recuperar la conversión de las campañas de marketing\", \"fuente\": {\"ref\": \"EST-2026-T4\", \"campo\": \"objetivos.OBJ-01\", \"tabla\": \"estrategia\"}, \"vigencia\": {\"desde\": \"2026-11-01\", \"hasta\": \"2027-03-31\"}}, {\"id\": \"F-OBJ-02\", \"tipo\": \"objetivo\", \"texto\": \"Objetivo comercial vigente (prioridad 2): Reactivar a los clientes recurrentes en riesgo de dejar de comprar\", \"fuente\": {\"ref\": \"EST-2026-T4\", \"campo\": \"objetivos.OBJ-02\", \"tabla\": \"estrategia\"}, \"vigencia\": {\"desde\": \"2026-11-01\", \"hasta\": \"2027-03-31\"}}, {\"id\": \"F-OBJ-03\", \"tipo\": \"objetivo\", \"texto\": \"Objetivo comercial vigente (prioridad 3): Proteger el margen: descuentos solo en promociones planificadas y nunca por debajo del costo\", \"fuente\": {\"ref\": \"EST-2026-T4\", \"campo\": \"objetivos.OBJ-03\", \"tabla\": \"estrategia\"}, \"vigencia\": {\"desde\": \"2026-11-01\", \"hasta\": \"2027-03-31\"}}, {\"id\": \"F-OBJ-04\", \"tipo\": \"objetivo\", \"texto\": \"Objetivo comercial vigente (prioridad 4): Reducir las devoluciones de Ropa con información clara de tallas\", \"fuente\": {\"ref\": \"EST-2026-T4\", \"campo\": \"objetivos.OBJ-04\", \"tabla\": \"estrategia\"}, \"vigencia\": {\"desde\": \"2026-11-01\", \"hasta\": \"2027-03-31\"}}, {\"id\": \"F-PROMO-003-VALOR\", \"tipo\": \"descuento\", \"texto\": \"La promoción \\\"Liquidación de ropa deportiva\\\" ofrece 20% de descuento.\", \"valor\": 20.0, \"fuente\": {\"ref\": \"PROMO-003\", \"campo\": \"valor\", \"tabla\": \"promocion\"}, \"unidad\": \"%\", \"vigencia\": {\"desde\": \"2026-11-10\", \"hasta\": \"2026-11-14\"}}, {\"id\": \"F-PROMO-003-VIGENCIA\", \"tipo\": \"vigencia\", \"texto\": \"La promoción \\\"Liquidación de ropa deportiva\\\" es válida del 10/11/2026 al 14/11/2026.\", \"valor\": {\"desde\": \"2026-11-10\", \"hasta\": \"2026-11-14\"}, \"fuente\": {\"ref\": \"PROMO-003\", \"campo\": \"vigente_desde,vigente_hasta\", \"tabla\": \"promocion\"}, \"vigencia\": {\"desde\": \"2026-11-10\", \"hasta\": \"2026-11-14\"}}, {\"id\": \"F-PROMO-003-ALCANCE\", \"tipo\": \"alcance\", \"texto\": \"La promoción \\\"Liquidación de ropa deportiva\\\" aplica a: la subcategoría Ropa deportiva.\", \"valor\": [\"subcategoria:Ropa_deportiva\"], \"fuente\": {\"ref\": \"PROMO-003\", \"campo\": \"alcance\", \"tabla\": \"promocion_alcance\"}, \"vigencia\": {\"desde\": \"2026-11-10\", \"hasta\": \"2026-11-14\"}}, {\"id\": \"F-ITEM-PRD0254-PRECIO\", \"tipo\": \"precio\", \"texto\": \"El precio de Conjunto deportivo DryMove es 186.35 USD.\", \"valor\": 186.35, \"fuente\": {\"ref\": \"PRD0254\", \"campo\": \"precio\", \"tabla\": \"item_catalogo\"}, \"unidad\": \"USD\", \"vigencia\": {\"desde\": \"2026-11-11\", \"hasta\": \"2026-11-11\"}}, {\"id\": \"F-ITEM-PRD0254-DISPONIBLE\", \"tipo\": \"disponibilidad\", \"texto\": \"Conjunto deportivo DryMove está disponible.\", \"valor\": true, \"fuente\": {\"ref\": \"PRD0254\", \"campo\": \"disponible\", \"tabla\": \"item_catalogo\"}, \"vigencia\": {\"desde\": \"2026-11-11\", \"hasta\": \"2026-11-11\"}}], \"empresa\": {\"pais\": \"Venezuela\", \"moneda\": \"USD\", \"nombre\": \"RetailVenture C.A.\", \"mercado\": \"8 ciudades: Caracas, Maracaibo, Valencia, Barquisimeto, Mérida, Puerto La Cruz, Maturín y San Cristóbal\", \"canales_venta\": [\"tienda_fisica\", \"online\", \"app_movil\"], \"propuesta_valor\": \"Cadena venezolana con 12 años que reúne en un solo lugar tecnología, moda, deporte, belleza, hogar y alimentos, en tienda física, online y app.\"}, \"audiencia\": [{\"nombre\": \"Frecuente\", \"canales\": [\"instagram\", \"app_movil\"], \"intereses\": [\"ofertas de temporada\", \"hogar\", \"moda\"], \"descripcion\": \"Clientes que compran con regularidad.\", \"necesidades\": [\"buena relación calidad-precio\", \"variedad\"], \"audiencia_id\": \"AUD-FRECUENTE\"}, {\"nombre\": \"Premium\", \"canales\": [\"instagram\", \"app_movil\", \"email\"], \"intereses\": [\"tecnología\", \"novedades\", \"experiencias exclusivas\"], \"descripcion\": \"Clientes de mayor gasto y fidelidad.\", \"necesidades\": [\"atención preferente\", \"acceso anticipado\"], \"audiencia_id\": \"AUD-PREMIUM\"}], \"industria\": \"Retail multicategoría\", \"objetivos\": [{\"texto\": \"Recuperar la conversión de las campañas de marketing\", \"fact_ids\": [\"F-OBJ-01\"], \"prioridad\": 1, \"objetivo_id\": \"OBJ-01\"}, {\"texto\": \"Reactivar a los clientes recurrentes en riesgo de dejar de comprar\", \"fact_ids\": [\"F-OBJ-02\"], \"prioridad\": 2, \"objetivo_id\": \"OBJ-02\"}, {\"texto\": \"Proteger el margen: descuentos solo en promociones planificadas y nunca por debajo del costo\", \"fact_ids\": [\"F-OBJ-03\"], \"prioridad\": 3, \"objetivo_id\": \"OBJ-03\"}, {\"texto\": \"Reducir las devoluciones de Ropa con información clara de tallas\", \"fact_ids\": [\"F-OBJ-04\"], \"prioridad\": 4, \"objetivo_id\": \"OBJ-04\"}], \"calendario\": [{\"desde\": \"2026-11-27\", \"hasta\": \"2026-11-30\", \"evento\": \"Black Friday\", \"relevancia\": \"alta\"}, {\"desde\": \"2026-12-01\", \"hasta\": \"2026-12-24\", \"evento\": \"Temporada navideña\", \"relevancia\": \"alta\"}], \"items_foco\": [{\"tipo\": \"producto\", \"moneda\": \"USD\", \"nombre\": \"Conjunto deportivo DryMove\", \"precio\": 186.35, \"item_id\": \"PRD0254\", \"fact_ids\": [\"F-ITEM-PRD0254-PRECIO\", \"F-ITEM-PRD0254-DISPONIBLE\"], \"atributos\": {}, \"categoria\": \"Deportes\", \"disponible\": true, \"relevancia\": 3.5, \"subcategoria\": \"Ropa_deportiva\", \"promociones_aplicables\": [\"PROMO-003\"]}], \"restricciones\": {\"no_vigentes\": [{\"ref\": \"PRD0259\", \"motivo\": \"SIN_DISPONIBILIDAD\", \"nombre\": \"Chaqueta cortavientos DryMove\", \"detalle\": \"Ítem agotado o fuera de su periodo de disponibilidad\"}], \"advertencias_legales\": [\"Toda promoción indica su vigencia y aplica hasta agotar existencias.\", \"Imágenes referenciales.\"], \"restricciones_sector\": [\"Vitaminas y suplementos: no prometer resultados de salud, curas ni beneficios médicos.\", \"No mencionar costos, márgenes ni datos de clientes.\"], \"afirmaciones_prohibidas\": [\"No afirmar que un producto o precio es el mejor o el más barato del mercado.\", \"No anunciar precios, descuentos, fechas ni disponibilidad que no estén en el perfil.\"]}, \"profile_version\": \"1.1\", \"fecha_referencia\": \"2026-11-11\", \"identidad_visual\": {\"paleta\": {\"fondo\": \"#F7F4EE\", \"texto\": \"#2E2E2E\", \"primario\": \"#1B3A5C\", \"secundario\": \"#F2A541\"}, \"logo_url\": null, \"uso_logo\": \"Logo en la esquina inferior derecha, sobre fondo claro, sin deformarlo ni cambiarle el color.\", \"referencias\": [\"Producto protagonista, con espacio libre para texto\", \"Escenas de hogar y ciudad venezolanas\"], \"estilo_imagen\": \"Fotografía de producto luminosa sobre fondos limpios; personas en situaciones cotidianas; sin filtros saturados.\"}, \"business_profile_id\": \"BP-001\", \"promociones_vigentes\": [{\"tipo\": \"porcentaje\", \"valor\": 20.0, \"nombre\": \"Liquidación de ropa deportiva\", \"canales\": [\"tienda_fisica\", \"online\", \"app_movil\"], \"aplica_a\": [\"subcategoria:Ropa_deportiva\"], \"fact_ids\": [\"F-PROMO-003-VALOR\", \"F-PROMO-003-VIGENCIA\", \"F-PROMO-003-ALCANCE\"], \"promo_id\": \"PROMO-003\", \"condiciones\": \"Válida del 10/11/2026 al 14/11/2026 o hasta agotar existencias.\", \"descripcion\": \"20% de descuento en ropa deportiva.\", \"vigente_desde\": \"2026-11-10\", \"vigente_hasta\": \"2026-11-14\"}], \"interpretacion_solicitud\": {\"categorias\": [], \"subcategorias\": [\"Ropa_deportiva\"], \"items\": [], \"promociones\": [\"PROMO-003\"], \"ventana\": {\"desde\": \"2026-11-14\", \"hasta\": \"2026-11-15\"}, \"metodo\": \"mock\"}}, \"data_sources\": [{\"ref\": \"EST-2026-T4\", \"source\": \"perfil_negocio.estrategia\"}, {\"ref\": \"PROMO-003\", \"source\": \"perfil_negocio.promocion\"}, {\"ref\": \"PRD0254\", \"source\": \"perfil_negocio.item_catalogo\"}, {\"ref\": \"AUD-FRECUENTE\", \"source\": \"perfil_negocio.audiencia\"}, {\"ref\": \"AUD-PREMIUM\", \"source\": \"perfil_negocio.audiencia\"}, {\"ref\": \"BP-001\", \"source\": \"perfil_negocio.perfil_negocio\"}, {\"ref\": \"BP-001\", \"source\": \"perfil_negocio.voz_marca\"}, {\"ref\": \"BP-001\", \"source\": \"perfil_negocio.regla_marca\"}, {\"ref\": \"BP-001\", \"source\": \"perfil_negocio.identidad_visual\"}]}, \"BP-002\": {\"context_pack\": {\"gaps\": [{\"campo\": \"identidad_visual\", \"codigo\": \"PERFIL_INCOMPLETO\", \"detalle\": \"Sin logo_url (AG-BOR no podrá incluir el logo)\", \"bloqueante\": false}], \"tono\": {\"tono\": \"Profesional, cálido y tranquilizador\", \"estilo\": \"Trata al paciente de usted. Explica en palabras sencillas, sin tecnicismos ni alarmas.\", \"hashtags_marca\": [\"#ClinicaAurora\", \"#SonrisaSana\"], \"politica_emojis\": \"Máximo 2 emojis; nunca en temas de tratamiento.\", \"palabras_prohibidas\": [\"sin dolor\", \"resultados garantizados\", \"el mejor dentista\", \"100% seguro\", \"milagro\"], \"palabras_obligatorias\": [\"Clínica Aurora\"]}, \"facts\": [{\"id\": \"F-OBJ-01\", \"tipo\": \"objetivo\", \"texto\": \"Objetivo comercial vigente (prioridad 1): Aumentar las citas de prevención (limpieza y control infantil)\", \"fuente\": {\"ref\": \"EST-2026-T4\", \"campo\": \"objetivos.OBJ-01\", \"tabla\": \"estrategia\"}, \"vigencia\": {\"desde\": \"2026-11-01\", \"hasta\": \"2027-03-31\"}}, {\"id\": \"F-OBJ-02\", \"tipo\": \"objetivo\", \"texto\": \"Objetivo comercial vigente (prioridad 2): Dar a conocer los tratamientos estéticos con información clara y sin promesas de resultados\", \"fuente\": {\"ref\": \"EST-2026-T4\", \"campo\": \"objetivos.OBJ-02\", \"tabla\": \"estrategia\"}, \"vigencia\": {\"desde\": \"2026-11-01\", \"hasta\": \"2027-03-31\"}}, {\"id\": \"F-PROMO-001-VALOR\", \"tipo\": \"descuento\", \"texto\": \"La promoción \\\"Mes de la prevención\\\" ofrece 15% de descuento.\", \"valor\": 15.0, \"fuente\": {\"ref\": \"PROMO-001\", \"campo\": \"valor\", \"tabla\": \"promocion\"}, \"unidad\": \"%\", \"vigencia\": {\"desde\": \"2026-11-06\", \"hasta\": \"2026-11-21\"}}, {\"id\": \"F-PROMO-001-VIGENCIA\", \"tipo\": \"vigencia\", \"texto\": \"La promoción \\\"Mes de la prevención\\\" es válida del 06/11/2026 al 21/11/2026.\", \"valor\": {\"desde\": \"2026-11-06\", \"hasta\": \"2026-11-21\"}, \"fuente\": {\"ref\": \"PROMO-001\", \"campo\": \"vigente_desde,vigente_hasta\", \"tabla\": \"promocion\"}, \"vigencia\": {\"desde\": \"2026-11-06\", \"hasta\": \"2026-11-21\"}}, {\"id\": \"F-PROMO-001-ALCANCE\", \"tipo\": \"alcance\", \"texto\": \"La promoción \\\"Mes de la prevención\\\" aplica a: el ítem Limpieza dental profesional.\", \"valor\": [\"item:SRV-001\"], \"fuente\": {\"ref\": \"PROMO-001\", \"campo\": \"alcance\", \"tabla\": \"promocion_alcance\"}, \"vigencia\": {\"desde\": \"2026-11-06\", \"hasta\": \"2026-11-21\"}}, {\"id\": \"F-ITEM-SRV-001-PRECIO\", \"tipo\": \"precio\", \"texto\": \"El precio de Limpieza dental profesional es 35.00 USD.\", \"valor\": 35.0, \"fuente\": {\"ref\": \"SRV-001\", \"campo\": \"precio\", \"tabla\": \"item_catalogo\"}, \"unidad\": \"USD\", \"vigencia\": {\"desde\": \"2026-11-11\", \"hasta\": \"2026-11-11\"}}, {\"id\": \"F-ITEM-SRV-001-DISPONIBLE\", \"tipo\": \"disponibilidad\", \"texto\": \"Limpieza dental profesional está disponible.\", \"valor\": true, \"fuente\": {\"ref\": \"SRV-001\", \"campo\": \"disponible\", \"tabla\": \"item_catalogo\"}, \"vigencia\": {\"desde\": \"2026-11-11\", \"hasta\": \"2026-11-11\"}}], \"empresa\": {\"pais\": \"Venezuela\", \"moneda\": \"USD\", \"nombre\": \"Clínica Odontológica Aurora\", \"mercado\": \"Caracas (una sede)\", \"canales_venta\": [\"consultorio\", \"whatsapp\", \"instagram\"], \"propuesta_valor\": \"Atención odontológica para toda la familia, con citas puntuales y explicaciones claras de cada tratamiento.\"}, \"audiencia\": [{\"nombre\": \"Familias con niños\", \"canales\": [\"instagram\", \"whatsapp\"], \"intereses\": [\"prevención\", \"odontopediatría\"], \"descripcion\": \"Padres y madres que buscan control dental para sus hijos.\", \"necesidades\": [\"citas en horario escolar compatible\", \"trato amable con niños\"], \"audiencia_id\": \"AUD-FAMILIAS\"}, {\"nombre\": \"Adultos jóvenes\", \"canales\": [\"instagram\"], \"intereses\": [\"estética dental\", \"blanqueamiento\", \"ortodoncia\"], \"descripcion\": \"Adultos que quieren mejorar la estética de su sonrisa.\", \"necesidades\": [\"precios claros\", \"pocas visitas\"], \"audiencia_id\": \"AUD-ADULTOS\"}], \"industria\": \"Salud — odontología\", \"objetivos\": [{\"texto\": \"Aumentar las citas de prevención (limpieza y control infantil)\", \"fact_ids\": [\"F-OBJ-01\"], \"prioridad\": 1, \"objetivo_id\": \"OBJ-01\"}, {\"texto\": \"Dar a conocer los tratamientos estéticos con información clara y sin promesas de resultados\", \"fact_ids\": [\"F-OBJ-02\"], \"prioridad\": 2, \"objetivo_id\": \"OBJ-02\"}], \"calendario\": [], \"items_foco\": [{\"tipo\": \"servicio\", \"moneda\": \"USD\", \"nombre\": \"Limpieza dental profesional\", \"precio\": 35.0, \"item_id\": \"SRV-001\", \"fact_ids\": [\"F-ITEM-SRV-001-PRECIO\", \"F-ITEM-SRV-001-DISPONIBLE\"], \"atributos\": {\"duracion_min\": 45}, \"categoria\": \"Prevención\", \"disponible\": true, \"relevancia\": 3.5, \"subcategoria\": \"Limpieza\", \"promociones_aplicables\": [\"PROMO-001\"]}], \"restricciones\": {\"no_vigentes\": [], \"advertencias_legales\": [\"Todo tratamiento está sujeto a evaluación clínica previa.\"], \"restricciones_sector\": [\"No publicar fotos de pacientes ni antes/después.\", \"Servicios sin precio publicado: invitar a la consulta de evaluación, nunca inventar un precio.\"], \"afirmaciones_prohibidas\": [\"No prometer resultados de un tratamiento ni ausencia de dolor.\"]}, \"profile_version\": \"1.1\", \"fecha_referencia\": \"2026-11-11\", \"identidad_visual\": {\"paleta\": {\"fondo\": \"#FFFFFF\", \"texto\": \"#264653\", \"primario\": \"#2A9D8F\", \"secundario\": \"#E9F5F2\"}, \"logo_url\": null, \"uso_logo\": \"Logo arriba a la izquierda, tamaño pequeño.\", \"referencias\": [\"Consultorio ordenado y luminoso\", \"Iconografía dental sencilla\"], \"estilo_imagen\": \"Ilustraciones limpias o fotografías del consultorio sin pacientes identificables; luz clara.\"}, \"business_profile_id\": \"BP-002\", \"promociones_vigentes\": [{\"tipo\": \"porcentaje\", \"valor\": 15.0, \"nombre\": \"Mes de la prevención\", \"canales\": [\"consultorio\"], \"aplica_a\": [\"item:SRV-001\"], \"fact_ids\": [\"F-PROMO-001-VALOR\", \"F-PROMO-001-VIGENCIA\", \"F-PROMO-001-ALCANCE\"], \"promo_id\": \"PROMO-001\", \"condiciones\": \"Válida del 06/11/2026 al 21/11/2026. Sujeta a evaluación clínica.\", \"descripcion\": \"15% de descuento en la limpieza dental profesional.\", \"vigente_desde\": \"2026-11-06\", \"vigente_hasta\": \"2026-11-21\"}], \"interpretacion_solicitud\": {\"categorias\": [], \"subcategorias\": [\"Limpieza\"], \"items\": [], \"promociones\": [\"PROMO-001\"], \"ventana\": null, \"metodo\": \"mock\"}}, \"data_sources\": [{\"ref\": \"EST-2026-T4\", \"source\": \"perfil_negocio.estrategia\"}, {\"ref\": \"PROMO-001\", \"source\": \"perfil_negocio.promocion\"}, {\"ref\": \"SRV-001\", \"source\": \"perfil_negocio.item_catalogo\"}, {\"ref\": \"AUD-FAMILIAS\", \"source\": \"perfil_negocio.audiencia\"}, {\"ref\": \"AUD-ADULTOS\", \"source\": \"perfil_negocio.audiencia\"}, {\"ref\": \"BP-002\", \"source\": \"perfil_negocio.perfil_negocio\"}, {\"ref\": \"BP-002\", \"source\": \"perfil_negocio.voz_marca\"}, {\"ref\": \"BP-002\", \"source\": \"perfil_negocio.regla_marca\"}, {\"ref\": \"BP-002\", \"source\": \"perfil_negocio.identidad_visual\"}]}};\n\nconst body = $input.first().json.body ?? {};\nconst ahora = new Date().toISOString();\nconst base = { contract_version: '1.0', execution_id: String(body.execution_id ?? 'SIN-ID'), agent_id: 'AG-CTX',\n               data_sources: [], warnings: [], started_at: ahora };\nconst falla = (code, message, retryable = false) =>\n  ({ ...base, status: 'failed', output: null, error: { code, message, retryable }, finished_at: new Date().toISOString() });\n\nconst req = ['contract_version','execution_id','iteration','agent_id','business_profile_id','user_request','sent_at'];\nconst faltan = req.filter(k => body[k] === undefined || body[k] === null || body[k] === '');\nlet r;\nif (faltan.length) r = falla('INVALID_INPUT', 'Faltan campos obligatorios: ' + faltan.join(', '));\nelse if (body.contract_version !== '1.0') r = falla('INVALID_INPUT', 'contract_version no soportada: ' + body.contract_version);\nelse if (body.agent_id !== 'AG-CTX') r = falla('INVALID_INPUT', 'agent_id debe ser AG-CTX');\nelse if (!PACKS[body.business_profile_id]) r = falla('DATA_NOT_FOUND', 'No existe un perfil activo con business_profile_id ' + body.business_profile_id);\nelse {\n  const p = PACKS[body.business_profile_id];\n  r = { ...base, status: 'completed', output: { context_pack: p.context_pack }, data_sources: p.data_sources,\n        warnings: ['MOCK: respuesta fija; el contenido no depende de user_request'], error: null,\n        finished_at: new Date().toISOString() };\n}\nreturn [{ json: r }];\n"
+      },
+      "id": "36048df8-b42f-40d3-9116-3d8792ec6b11",
+      "name": "Respuesta mock",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        260,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "08381fdc-c9df-41e6-863d-96cf38d7558b",
+      "name": "Responder",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        520,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "ag-ctx-mock/health",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "3fe204ef-8b72-41f8-9896-9882b6d88666",
+      "name": "GET /health",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        220
+      ],
+      "webhookId": "db7594dc-0a54-4181-8144-a5e97e3df9fc"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{ json: { status: 'ok', agent_id: 'AG-CTX', version: 'mock-1.0', contract_version: '1.0', db: 'n/a', llm: 'n/a', time: new Date().toISOString() } }];"
+      },
+      "id": "b49e00bd-45b7-4115-aaf0-bd06144b8e75",
+      "name": "Estado",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        260,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "f1d12dc9-cfb6-4acd-9bdc-c3b074e3a8f4",
+      "name": "Responder health",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        520,
+        220
+      ]
+    }
+  ],
+  "connections": {
+    "POST /invoke": {
+      "main": [
+        [
+          {
+            "node": "Respuesta mock",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respuesta mock": {
+      "main": [
+        [
+          {
+            "node": "Responder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GET /health": {
+      "main": [
+        [
+          {
+            "node": "Estado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Estado": {
+      "main": [
+        [
+          {
+            "node": "Responder health",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}
