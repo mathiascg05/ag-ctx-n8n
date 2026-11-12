@@ -1,0 +1,16 @@
+# Render (plan gratuito) duerme el servicio tras 15 minutos sin tráfico y tarda ~1 minuto en despertar.
+# Este ping gratuito de GitHub Actions lo mantiene despierto. Usa /healthz de n8n: no ejecuta workflows ni consulta Neon.
+name: Mantener despierto el agente
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch: {}
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Ping a /healthz
+        env:
+          URL: ${{ vars.AGENTE_URL || 'https://ag-ctx-n8n.onrender.com' }}
+        run: curl -fsS --max-time 90 --retry 2 "$URL/healthz" && echo " ok"
